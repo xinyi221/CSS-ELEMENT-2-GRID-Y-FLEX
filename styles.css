@@ -1,0 +1,407 @@
+/* ==========================================================================
+   1. RESET BÁSICO
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  /* Fondo vivo con gradiente pastel */
+  background: linear-gradient(135deg, #e0f2fe 0%, #f3e8ff 50%, #fce7f3 100%);
+  color: #1e293b;
+}
+
+/* ==========================================================================
+   2. LAYOUT PRINCIPAL (CSS GRID + GRID AREAS)
+   ========================================================================== */
+body {
+  /* TASCA 1 - Disposa el BODY com un GRID amb les següents caraterístiques: */
+  /* 4 files: 1fr 0.5fr auto 1fr */
+  /* 2 columnes: 3fr 1fr */
+  /* Un gap entre files i entre clumnes de 1.25rem */
+  /* Les areas corresponents al layout de mostra */
+  /* RECORDA fer l'assignació d'area a cada bloc (més avall) */
+  display: grid;
+  grid-template-rows: 1fr 0.5fr auto 1fr;
+  grid-template-columns: 3fr 1fr;
+  gap: 1.25rem;
+  grid-template-areas: 
+  "header header"
+  "nav nav"
+  "main aside"
+  "footer footer";
+  padding: 1.25rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  
+}
+
+/* Asignación de áreas */
+
+.site-header {
+  grid-area: header;
+  /* grid-area: header; */
+}
+
+.site-nav {
+  /* grid-area: nav; */
+    grid-area: nav;
+
+}
+
+.site-main {
+  /* grid-area: main; */
+      grid-area: main;
+
+}
+
+.site-aside {
+  /* grid-area: aside; */
+    grid-area: aside;
+
+}
+
+.site-footer {
+  /* grid-area: footer; */
+  grid-area: footer;
+}
+
+/* ==========================================================================
+   3. ESTILOS DE COMPONENTES & FLEXBOX / INNER GRID
+   ========================================================================== */
+
+/* Header: Flex horizontal sin wrap, ocupando el ancho */
+.site-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  /* TASCA 2 - Disposa el HEADER com un FLEX horitzontal sense wrap */
+  /* Justifica'l maximitzant l'espai ENTRE elements */
+  /* Alinea verticalment els elements al centre del header */
+  background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
+  padding: 1.25rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.25);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.35rem;
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  background: #facc15;
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #06b6d4;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #0891b2;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Nav: Flex horizontal centrado */
+.site-nav {
+  /* TASCA 3 - Disposa el NAV com un FLEX horitzontal */
+  /* Centra els elements horitzontalment, amb un gap de 1.5rem */
+  /* Alinea verticalment els elements al centre del header */
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  gap: 1.5rem;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 0.85rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.site-nav a {
+  color: #475569;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: #4f46e5;
+  background-color: #e0e7ff;
+}
+
+/* Main: Flex vertical con wrap a varias columnas */
+.site-main {
+  /* TASCA 4 - Disposa el MAIN com un FLEX vertical amb wrap */
+  /* Alinea horitzontalment els elements a l'esquerra */
+  /* Gap de 1.25rem */
+  display:flex;
+  gap: 1.25rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: 470px;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  overflow-x: auto;
+}
+
+.card {
+  width: 290px;
+  height: 135px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 5px solid #cbd5e1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Bordes acentuados y badges coloridos según tema */
+.card-ia {
+  border-left-color: #4f46e5;
+}
+
+.card-energy {
+  border-left-color: #10b981;
+}
+
+.card-robotics {
+  border-left-color: #f59e0b;
+}
+
+.card-hardware {
+  border-left-color: #06b6d4;
+}
+
+.card-space {
+  border-left-color: #8b5cf6;
+}
+
+.card-telecom {
+  border-left-color: #ec4899;
+}
+
+.tag {
+  align-self: flex-start;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.3rem;
+}
+
+.tag-ia {
+  background-color: #e0e7ff;
+  color: #4338ca;
+}
+
+.tag-energy {
+  background-color: #d1fae5;
+  color: #047857;
+}
+
+.tag-robotics {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.tag-hardware {
+  background-color: #cffaff;
+  color: #0e7490;
+}
+
+.tag-space {
+  background-color: #ede9fe;
+  color: #6d28d9;
+}
+
+.tag-telecom {
+  background-color: #fce7f3;
+  color: #be185d;
+}
+
+.card h3 {
+  font-size: 0.95rem;
+  color: #0f172a;
+  margin-bottom: 0.3rem;
+  line-height: 1.25;
+}
+
+.card p {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.35;
+}
+
+/* Aside: Grid sencillo interno (2 columnas) */
+.site-aside {
+  /* TASCA 5 - Disposa l'ASIDE com un GRID de 2 columnes iguals separades 1rem*/
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:1rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  align-content: start;
+}
+
+.widget {
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.widget-cyan {
+  background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+  color: #0369a1;
+}
+
+.widget-emerald {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  color: #047857;
+}
+
+.widget-purple {
+  background: linear-gradient(135deg, #f3e8ff, #ddd6fe);
+  color: #6d28d9;
+}
+
+.widget-rose {
+  background: linear-gradient(135deg, #ffe4e6, #fecdd3);
+  color: #be123c;
+}
+
+.widget h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+}
+
+.widget .stat {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.widget span {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.widget .desc {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+/* Footer: Flex horizontal con modificación de alineación en un hijo */
+.site-footer {
+  /* TASCA 6 - Disposa el FOOTER com un FLEX horitzontal centrat verticalment */
+  /* gap 2rem */
+  display:flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  background: #0f172a;
+  color: #94a3b8;
+  padding: 1.25rem 2rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.15);
+}
+
+.site-footer a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: #38bdf8;
+}
+
+.footer-links {
+  /* TASCA 7 - Fes que la capsa de links es diposi també com un FLEX (gap 1.25 rem) */
+  display: flex;
+  gap: 1.25rem;
+ 
+}
+
+/* Modificación de alineación de un elemento específico */
+.footer-back-to-top {
+  margin-left: auto;
+  /* Desplaza el elemento totalmente a la derecha */
+  align-self: center;
+  /* Modifica la alineación en el eje vertical */
+  flex-direction: row;
+  color: #facc15 !important;
+  font-weight: 700;
+}
